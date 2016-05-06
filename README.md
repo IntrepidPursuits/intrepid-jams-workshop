@@ -268,6 +268,7 @@ Now if we go back to the browser, we'll see a couple things are different (we'll
 - Add the rails 12 factor gem
 
 - In the Heroku dashboard, create a new app (can also use `heroku create` command -- I don't b/c I have multiple Heroku accounts and it can get screwy)
+- Set environment variables, either via the Heroku dashboard or `heroku config:set <VAR_NAME>=<var>`
 - Find the SSH URL and add it as a remote:
 
 ```
