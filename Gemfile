@@ -59,6 +59,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem "rails_12factor"
   gem "rails_stdout_logging"
   gem "rack-timeout"
 end
