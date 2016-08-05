@@ -11,3 +11,8 @@
 /public/assets
 /tags
 /tmp/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
