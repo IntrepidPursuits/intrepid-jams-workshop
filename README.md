@@ -239,6 +239,17 @@ class Game < ActiveRecord::Base
 end
 ```
 
+Add ActiveModelSerializers to your project by adding this line to your application's Gemfile:
+
+```
+gem "active_model_serializers", "0.8.3"
+```
+And then execute:
+
+```
+$ bundle
+```
+
 Generate a serializer:
 
 ```
