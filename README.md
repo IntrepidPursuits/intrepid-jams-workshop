@@ -301,6 +301,117 @@ Now you should be able to navigate to `<heroku_app_name>.herokuapp.com/games` (c
 - View heroku logs: `heroku logs --tail`
 - `binding.pry`
 
+# Next Exercises
+
+1. Add a `Player` model
+
+A `Team` should have many `Player`s, and should no longer have a `player_names` attribute.
+
+A `Player` should have a first name, last name, and jersey number.
+
+2. Change the association between `Game` and `Team`
+
+Right now, if a `Team` plays multiple games, they'll show up twice in our database.  This isn't optimal because duplicated data provides more room for error.
+
+Let's change the data model so that `Team`s can play in multiple games.  Our model should look like this:
+
+```
+Game
+-------
+id
+
+CompetingTeam
+--------------
+id
+game_id
+team_id
+score
+
+Team
+------
+id
+name
+
+Player
+-------
+id
+first_name
+last_name
+jersey_number
+```
+
+Update the `GET /games` endpoint to return information on the competing teams.
+
+```json
+{
+  "games": [
+    {
+      "id": 1,
+      "competing_teams": [
+        {
+          "id": 3,
+          "name": "Rams",
+          "score": 90
+        },
+        {
+          "id": 7,
+          "name": "Lakers",
+          "score": 72
+        }
+      ]
+    }
+  ]
+}
+```
+
+3. Add a `GET /teams` endpoint
+
+This endpoint should return a list of teams with each team's ID and name.
+
+```json
+{
+  "teams": [
+    {
+      "id": 3,
+      "name": "Rams"
+    },
+    {
+      "id": 7,
+      "name": "Lakers"
+    }
+  ]
+}
+```
+
+4. Add a `GET /teams/:id` endpoint
+
+This endpoint should return all the information we have about a `Team`, including its name, a list of players, and a list of the games they've played.
+
+```json
+{
+  "team": {
+    "id": 3,
+    "name": "Rams",
+    "players": [
+      {
+        "id": 17,
+        "first_name": "David",
+        "last_name": "Rodriguez",
+        "jersey_number": 25
+      }
+    ],
+    "games": [
+      {
+        "id": 1,
+        "score": 90,
+        "opposing_team_name": "Lakers",
+        "opposing_team_score": 72
+      }
+    ]
+  }
+}
+```
+
 # Basic Suspenders stuff
 
 ## Getting Started
